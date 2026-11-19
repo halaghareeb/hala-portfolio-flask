@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">{{ profile.role }}</span>
+      <h1>{{ profile.name }}</h1>
+      <p class="sub">{{ profile.sub }}</p>
+      <p class="skills-label">Areas of interest</p>
+      <ul class="chips">
+        {% for skill in profile.skills %}<li class="chip">{{ skill }}</li>{% endfor %}
+      </ul>
+      
+    </div>
+    <img class="hero-photo" src="{{ profile.photo }}" alt="Portrait of {{ profile.name }}">
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="resume-block" id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+      </div>
+      <div class="timeline">
+        {% for e in education %}
+        <article class="timeline-item reveal">
+          <div class="card">
+            <div class="edu-head">
+              <h3>{{ e.title }}</h3>
+              <span class="date">{{ e.date }}</span>
+            </div>
+            <ul class="institutions">
+              {% for inst in e.institutions %}<li>{{ inst }}</li>{% endfor %}
+            </ul>
+            <ul class="highlights">
+              {% for h in e.highlights %}
+              <li>{{ h.text }}{% if h.link %} (<a href="{{ h.link }}" target="_blank" rel="noopener">View</a>){% endif %}</li>
+              {% endfor %}
+            </ul>
+            <p class="topics-label">Covered topics</p>
+            <ul class="tags">
+              {% for t in e.topics %}<li class="tag">{{ t }}</li>{% endfor %}
+            </ul>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="resume-block" id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        {% for exp in experience %}
+        <article class="timeline-item reveal">
+          <div class="card">
+            <div class="edu-head">
+              <h3>{{ exp.title }}</h3>
+              <span class="date">{{ exp.date }}</span>
+            </div>
+            <ul class="affiliations">
+              {% for affiliation in exp.Affiliations %}<li>{{ affiliation }}</li>{% endfor %}
+            </ul>
+            <ul class="highlights">
+              {% for h in exp.highlights %}<li>{{ h.text }}</li>{% endfor %}
+            </ul>
+            <p class="topics-label">Skills</p>
+            <ul class="tags">
+              {% for skill in exp.skills %}<li class="tag">{{ skill }}</li>{% endfor %}
+            </ul>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="explore">
+  <div class="container">
+    <div class="section-head">
+      <h2>Explore My Portfolio</h2>
+    </div>
+    <div class="grid explore-grid">
+      {% for item in explore %}
+      <a class="explore-card reveal" href="{{ url_for(item.endpoint) }}">
+        <span class="explore-icon">{{ icon(item.icon) }}</span><span>{{ item.label }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

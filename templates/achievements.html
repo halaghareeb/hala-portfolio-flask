@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, feature %}
+
+{% block description %}Award-winning geographic portals and media coverage, including Esri SAG Awards 2022–2024.{% endblock %}
+
+{% block content %}
+{{ page_hero(None, "Achievements",
+             "The projects presented here were implemented in the real world. Due to confidentiality and ownership constraints, full project details cannot be shared publicly.") }}
+
+<section class="section compact-content">
+  <div class="container">
+    {% for a in achievements %}{{ feature(a, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}

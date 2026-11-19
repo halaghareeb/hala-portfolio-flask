@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, feature %}
+
+{% block description %}Selected academic projects: wayfinding research, a UAV study platform and a building maintenance platform.{% endblock %}
+
+{% block content %}
+{{ page_hero(None, "Educational Projects", "Selected projects") }}
+
+<section class="section compact-content">
+  <div class="container">
+    {% for p in projects %}{{ feature(p, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}

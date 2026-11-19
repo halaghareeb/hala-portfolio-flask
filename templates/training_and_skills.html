@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, feature %}
+
+{% block description %}Latest training: LiDAR data processing and an ArcGIS Experience Builder portfolio.{% endblock %}
+
+{% block content %}
+{{ page_hero(None, "Latest Training and Acquired Skills", "Latest training courses and demos") }}
+
+<section class="section compact-content">
+  <div class="container">
+    <article class="reveal training-block">
+      <h3>{{ lidar.title }}</h3>
+      <p class="subtitle">{{ lidar.subtitle }}</p>
+      {% for p in lidar.paragraphs %}<p>{{ p }}</p>{% endfor %}
+      <div class="gallery gallery-4">
+        {% for img in lidar.images %}
+        <img src="{{ img }}" alt="LiDAR training image {{ loop.index }}" loading="lazy" data-zoom>
+        {% endfor %}
+      </div>
+    </article>
+
+    {% for p in projects %}{{ feature(p, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}

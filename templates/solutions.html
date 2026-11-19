@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, ext_btn %}
+
+{% block description %}Conceptual GIS solutions built with ArcGIS Experience Builder, StoryMaps and Dashboards.{% endblock %}
+
+{% block content %}
+{{ page_hero("", "Conceptual Solutions",
+             "These solutions were made for demonstration purposes only and do not represent real projects.") }}
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3">
+      {% for s in solutions %}
+      <article class="project-card reveal">
+        <img class="thumb" src="{{ s.image }}" alt="Screenshot of {{ s.title }}" loading="lazy" data-zoom>
+        <div class="body">
+          <h3>{{ s.title }}</h3>
+          <div class="actions">{{ ext_btn(s.url) }}</div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="note">
+      <p>I created these proofs of concept (POCs) during my time at Esri North Africa, and I have explicit permission to share them for portfolio purposes.</p>
+      <p>All rights to the original products belong to Esri North Africa.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

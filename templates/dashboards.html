@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, ext_btn %}
+
+{% block description %}Samples of interactive data dashboards.{% endblock %}
+
+{% block content %}
+{{ page_hero("", "Dashboards", "Click any dashboard to view it in full size.") }}
+
+<section class="section compact-content">
+  <div class="container">
+    <div class="grid grid-3">
+      {% for dashboard in dashboards %}
+      <article class="project-card reveal">
+        <img class="thumb" src="{{ dashboard.image }}" alt="Screenshot of {{ dashboard.title }}" loading="lazy" data-zoom>
+        <div class="body">
+          <h3>{{ dashboard.title }}</h3>
+          {% if dashboard.url %}
+          <div class="actions">{{ ext_btn(dashboard.url, dashboard.button_label|default("Live view")) }}</div>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
