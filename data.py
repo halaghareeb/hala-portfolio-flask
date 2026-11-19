@@ -297,7 +297,7 @@ ACHIEVEMENTS = [
         ],
     },
     {
-        "title": "Description of Egypt (“Wasf Masr”)",
+        "title": "Digital Egypt (“Wasf Masr”)",
         "tagline": "SAG Award 2022",
         "paragraphs": [
             "Esri North Africa and the Information and Decision Support Center (IDSC) received a SAG Award at "
